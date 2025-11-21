@@ -72,6 +72,16 @@ label {
   background-color: #9f9f9f;
 }
 
+.icon-small {
+    height: 16px;
+    width: 16px;
+}
+
 input::placeholder {
     opacity: 75%;
+}
+
+a {
+    text-decoration: underline;
+    color: black;
 }
