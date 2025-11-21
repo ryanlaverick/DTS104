@@ -69,22 +69,37 @@
     </head>
 
     <body>
-        <form action="server/login.php" method="post">
-            <h1>Login</h1>
+        <div class="form">
+             <form action="server/login.php" method="post">
+                <h1>Login</h1>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com" />
-                <ul id="email-errors" class="form-errors"></ul>
-            </div>
-                
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-input" id="password" name="password" type="password" placeholder="••••••••" />
-                <ul id="password-errors" class="form-errors"></ul>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com" />
+                    <ul id="email-errors" class="form-errors"></ul>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-input" id="password" name="password" type="password" placeholder="••••••••" />
+                    <ul id="password-errors" class="form-errors"></ul>
+                </div>
+
+                <input type="submit" class="form-button" value="Login" />
+            </form>
+
+            <div class="divider-container">
+                <div class="divider"></div>
+                <p>or</p>
+                <div class="divider"></div>
             </div>
 
-            <input type="submit" class="form-button" value="Login" />
-        </form>
+            <form action="register.html">
+                <input type="submit" class="form-button" value="Register" />
+            </form>
+        </div>
+       
+
+        
     </body>
 </html>

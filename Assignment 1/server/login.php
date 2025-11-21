@@ -28,7 +28,7 @@ try {
             if ($row['user_type'] === 'admin') {
                 header("Location: ../view_tasks.php");
             } else {
-                header("Location: ../report.html");
+                header("Location: ../report_issue.php");
             }
         } else {
             echo "Invalid credentials";

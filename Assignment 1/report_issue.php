@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!$_SESSION['loggedIn']) {
+    header("Location: index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +20,7 @@
     </head>
 
     <body>
-        <form action="server/create_request.php" method="post">
+        <form action="server/create_request.php" method="post" class="form">
             <h1>Request Support</h1>
 
             <div class="form-group">

@@ -34,7 +34,7 @@ try {
         $_SESSION['email'] = $email;
         $_SESSION['userType'] = $userType;
 
-        header("Location: ../view_tasks.php");
+        header("Location: ../report_issue.php");
     } else {
         echo "You are here by mistake";
     }

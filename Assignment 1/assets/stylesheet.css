@@ -14,12 +14,7 @@ label {
     font-weight: 500;
 }
 
-#divider {
-    margin-top: 25px;
-    border: 0.5px solid rgb(208, 207, 207);
-}
-
-form, .form {
+.form {
     background-color: rgb(241, 241, 241);
     margin-top: 5%;
     width: 50%;
@@ -62,4 +57,17 @@ form, .form {
 .form-errors {
     color: red;
     margin-top: 8px;
+}
+
+.divider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #9f9f9f;
 }
