@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Calculator</title>
+
+        <script>
+            function calculate() {
+                let valueOne = document.getElementById('txtNo1').value
+                let valueTwo = document.getElementById('txtNo2').value
+                let operator = document.getElementById('ddOperator').value
+
+                if (valueOne === '' || isNaN(valueOne)) {
+                    alert('First number must be a valid number!')
+                    return
+                }
+                
+                if (valueTwo === '' || isNaN(valueTwo)) {
+                    alert('Second number must be a valid number!')
+                    return
+                }
+
+                valueOne = parseInt(valueOne)
+                valueTwo = parseInt(valueTwo)
+
+                const equation = valueOne + ' ' + operator + ' ' + valueTwo + ' = '
+
+                switch (operator) {
+                    case '-':
+                        document.getElementById('result').innerHTML = equation + (valueOne - valueTwo)
+                        break
+                    case '+':
+                        document.getElementById('result').innerHTML = equation + (valueOne + valueTwo)
+                        break
+                    case '/':
+                        document.getElementById('result').innerHTML = equation + (valueOne / valueTwo)
+                        break
+                    case '*':
+                        document.getElementById('result').innerHTML = equation + (valueOne * valueTwo)
+                        break
+                    default:
+                        alert('Please select a valid operator!')
+                        return
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>Simple Math Calculator</h1>
+
+        <div>
+            <input id="txtNo1" />
+            
+            <select id="ddOperator">
+                <option>-</option>
+                <option>+</option>
+                <option>/</option>
+                <option>*</option>
+            </select>
+
+            <input id="txtNo2" />
+        </div>
+
+        <br><br>
+
+        <button onclick="calculate();">calculate</button>
+
+        <br><br>
+
+        <div id="result"></div>
+    </body>
+
+</html>

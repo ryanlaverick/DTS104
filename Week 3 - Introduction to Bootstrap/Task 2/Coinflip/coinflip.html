@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Calculator</title>
+
+        <script>
+            function flipCoin() {
+                let number = Math.round(Math.random())
+
+                console.log(number)
+
+                if (number == 1) {
+                    document.getElementById('result').innerHTML = "<img src='coin-tails.webp' height='100px' alt='Tails Side of a British One Pence Coin'>"
+                    document.getElementById('text-result').innerHTML = 'You flipped Tails!'
+                    return
+                }
+
+                document.getElementById('result').innerHTML = "<img src='coin-heads.jpg' height='100px' alt='Heads Side of a British One Pence Coin'>"
+                document.getElementById('text-result').innerHTML = 'You flipped Heads!'
+            }
+        </script>
+    </head>
+
+    <body onload="flipCoin();">
+        <div id="result">
+            
+        </div>
+
+        <div id="text-result"></div>
+
+        <button id="button" onclick="flipCoin();">
+            Toss a coin
+        </button>
+    </body>
+</html>

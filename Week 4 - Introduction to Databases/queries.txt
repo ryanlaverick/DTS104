@@ -1,0 +1,40 @@
+Find all of the people in the database who are Male
+-> SELECT * FROM t_people WHERE gender = 'Male';
+
+
+Find all of the first names only for everyone who is Female
+-> SELECT first_name FROM t_people WHERE gender = 'Female';
+
+Find all of the people who drive an Audi
+-> SELECT * FROM t_people WHERE car = 'Audi';
+
+Display only the email address for people who are web developers
+-> SELECT email FROM t_people WHERE occupation = 'Web Developer III';
+
+Display all of the people who have a .com email address (you will need to look into wildcard operators) 
+-> SELECT * FROM t_people WHERE email LIKE '%.com';
+
+Design a question for your partner and see if they can construct the correct SQL SELECT statement
+
+
+Again, using W3schools as a reference, can you UPDATE the following:
+Doris Nitto has changed her car, she now drives a Mazda
+-> UPDATE t_people SET car = 'Mazda' WHERE first_name = 'Doris' AND last_name = 'Nitto';
+
+Zabrina Jouanny has changed her name to Georgina Lilly
+-> UPDATE t_people SET first_name = 'Georgina', 'last_name' = 'Lilly' WHERE first_name = 'Zabrina' AND last_name = 'Jouanny';
+
+Dale Spiby has now enrolled at the University of Sunderland
+-> UPDATE t_people SET education = 'University of Sunderland' WHERE first_name = 'Dale' AND last_name = 'Spiby';
+
+ID 773 has changed their job and is now a Doctor of Medicine
+-> UPDATE t_people SET occupation = 'Doctor of Medicine' WHERE id = 773;
+
+
+Can you use the INSERT statement and enter five of your friends into the database. Don’t forget to use W3schools as a reference. 
+-> INSERT INTO t_people (first_name, last_name, email, gender, occupation, skill, car, education) VALUES
+('John', 'Waincroft', 'john.waincroft@gmail.com', 'Male', 'IT Support Technician', 'Networking', 'Suzuki', 'Harvard'),
+('Fiona', 'Danby', 'fiona.danby@icloud.com', 'Female', 'Business Administrator', 'Painting', 'Mazda', 'Columbia University'),
+('Scarlett', 'Donohue', 'scarlett.donohue@protonmail.com', 'Female', 'Architect', 'Fencing', 'Toyota', 'Odessa National Maritime Academy'),
+('Paul', 'Maye', 'p.maye@icloud.com', 'Male', 'Cashier', 'Mechanic', 'Peugeot', 'Kings College London'),
+('Josh', 'Palmer', 'jpalmer@hotmail.co.uk', 'Male', 'Accountant', 'Football', 'Honda', 'University of Sunderland')

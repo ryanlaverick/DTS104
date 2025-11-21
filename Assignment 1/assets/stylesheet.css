@@ -1,0 +1,65 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(0, 232, 232), rgb(73, 73, 217));
+    background-repeat: no-repeat;
+    justify-content: center;
+    display: flex;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+label {
+    font-weight: 500;
+}
+
+#divider {
+    margin-top: 25px;
+    border: 0.5px solid rgb(208, 207, 207);
+}
+
+form, .form {
+    background-color: rgb(241, 241, 241);
+    margin-top: 5%;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-input {
+    background-color: white;
+    border: 1px;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.form-button {
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+    color: white;
+    background-color: rgb(73, 73, 217);
+    background-repeat: no-repeat;
+    text-align: center;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: rgb(0, 232, 232);
+    transition-duration: 500ms;
+    color: black;
+}
+
+.form-errors {
+    color: red;
+    margin-top: 8px;
+}

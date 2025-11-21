@@ -1,0 +1,26 @@
+body {
+    background-color: #aaaaaa;
+}
+
+h1 {
+    color: orange;
+    font-size: 300%;
+    margin: 50px 100px 300px 100px;
+}
+
+#latest {
+    color: yellow;
+    font-size: 150%;
+}
+
+.loss {
+    color: red;
+}
+
+.win {
+    color: #006500;
+}
+
+.bigger {
+    font-size: 150%;
+}
