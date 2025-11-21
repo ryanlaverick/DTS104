@@ -85,3 +85,19 @@ a {
     text-decoration: underline;
     color: black;
 }
+
+div#logout {
+    position: absolute;
+    top: 32px;
+    right: 32px
+}
+
+#logout-button {
+    padding: 8px 16px 8px 16px;
+    border-radius: 4px;
+    color: white;
+    background-color: red;
+    background-repeat: no-repeat;
+    text-align: center;
+    cursor: pointer;
+}

@@ -25,6 +25,12 @@ if ($_SESSION['userType'] != 'admin') {
     </head>
 
     <body>
+        <div id="logout">
+            <form action="server/logout.php" method="POST">
+                <button id="logout-button">Logout</button>
+            </form>
+        </div>
+
         <div class="form">
             <table>
                 <tr>

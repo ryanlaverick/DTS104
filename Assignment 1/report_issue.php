@@ -20,6 +20,12 @@ if (!$_SESSION['loggedIn']) {
     </head>
 
     <body>
+        <div id="logout">
+            <form action="server/logout.php" method="POST">
+                <button id="logout-button">Logout</button>
+            </form>
+        </div>
+
         <form action="server/create_request.php" method="post" class="form">
             <h1>Request Support</h1>
 
