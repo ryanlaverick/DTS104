@@ -71,3 +71,7 @@ label {
   height: 1px;
   background-color: #9f9f9f;
 }
+
+input::placeholder {
+    opacity: 75%;
+}
