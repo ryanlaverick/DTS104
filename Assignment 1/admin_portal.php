@@ -36,18 +36,18 @@ if ($_SESSION['userType'] != 'admin') {
                 <div class="tag-line">
                     <h2>Pending Tasks</h2>
                 </div>
-                
-                <form>
-                    <input type="submit" class="form-button" value="View">
-                </form>
+
+                <a href="pending_tasks.php">
+                    <button class="form-button">View Pending Tasks</button>
+                </a>
             </div>
 
             <div class="card">
                 <h2>Completed Tasks</h2>
 
-                <form>
-                    <input type="submit" class="form-button" value="View">
-                </form>
+                <a href="completed_tasks.php">
+                    <button class="form-button">View Completed Tasks</button>
+                </a>
             </div>
         </div>
     </body>
