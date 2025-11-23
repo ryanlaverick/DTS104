@@ -26,7 +26,7 @@ try {
             $_SESSION['userType'] = $row['user_type'];
 
             if ($row['user_type'] === 'admin') {
-                header("Location: ../view_tasks.php");
+                header("Location: ../admin_portal.php");
             } else {
                 header("Location: ../report_issue.php");
             }
