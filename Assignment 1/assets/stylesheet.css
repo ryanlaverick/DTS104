@@ -50,6 +50,10 @@ a {
     margin-top: 8px;
 }
 
+textarea.form-input {
+    min-height: 200px;
+}
+
 .form-input::placeholder {
     opacity: 75%;
 }
