@@ -52,6 +52,7 @@ a {
 
 textarea.form-input {
     min-height: 200px;
+    resize: none;
 }
 
 .form-input::placeholder {
