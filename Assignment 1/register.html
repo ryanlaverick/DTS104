@@ -9,6 +9,37 @@
         <link rel="stylesheet" href="assets/stylesheet.css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.1/css/all.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet'>
+
+        <script>
+            function resetErrors() {
+                document.getElementById('email-errors').innerHTML = ""
+                document.getElementById('password-errors').innerHTML = ""
+            }
+
+            function validate() {
+                resetErrors()
+
+                let hasErrors = false
+
+                let email = document.getElementById('email').value
+                let emailInput = document.getElementById('email').classList
+
+                if (! email || email == '') {
+                    hasErrors = true
+                    document.getElementById('email-errors').innerHTML += 'Please provide a valid email address!'
+                }
+
+                let password = document.getElementById('password').value
+                let passwordInput = document.getElementById('password').classList
+
+                if (! password || password == '') {
+                    hasErrors = true
+                    document.getElementById('password-errors').innerHTML += 'Please provide a valid password!'
+                }
+
+                return !hasErrors
+            }
+        </script>
     </head>
 
     <body>
@@ -18,19 +49,19 @@
                 Back to Login
             </a>
 
-            <form action="server/register_user.php" method="post">
+            <form action="server/register_user.php" method="post" onsubmit="return validate()">
                 <h1>Register</h1>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com" />
-                    <ul id="email-errors" class="form-errors"></ul>
+                    <div id="email-errors" class="form-errors"></div>
                 </div>
                     
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input class="form-input" id="password" name="password" type="password" placeholder="••••••••" />
-                    <ul id="password-errors" class="form-errors"></ul>
+                    <div id="password-errors" class="form-errors"></div>
                 </div>
 
                 <input type="submit" class="form-button" value="Register" />
