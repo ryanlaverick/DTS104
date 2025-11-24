@@ -25,17 +25,9 @@ if ($_SESSION['userType'] != 'admin') {
     </head>
 
     <body>
-        <div class="form">
-            <h1>Pending Tasks</h1>
-            <table>
-                <tr>
-                    <th>Equipment Type</th>
-                    <th>Issue</th>
-                    <th>Department</th>
-                    <th>Room Number</th>
-                    <th>Reported At</th>
-                </tr>
-
+        <div id="vertical-column">
+            <div class="card">
+                <h1>
                 <?php
                     include 'server/dbconnect.php';
 
@@ -43,22 +35,41 @@ if ($_SESSION['userType'] != 'admin') {
                         $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
                         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $sqlQuery = "SELECT * FROM $requestsTable WHERE completed_at IS NULL ORDER BY submitted_at DESC";
+                        $countQuery = $connection->prepare("SELECT COUNT(*) FROM $requestsTable WHERE completed_at IS NULL");
+                        $countQuery->execute();
 
-                        foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
-                            echo "<tr>";
-                            echo "<td>" . $row['equipment_type'] . "</td>";
-                            echo "<td>" . $row['short_descr'] . "</td>";
-                            echo "<td>" . $row['department'] . "</td>";
-                            echo "<td>" . $row['room_number'] . "</td>";
-                            echo "<td>" . $row['reported_at'] . "</td>";
-                            echo "</tr>";
-                        }
+                        echo $countQuery->fetch(PDO::FETCH_COLUMN);
+
                     } catch(PDOException $e) {
-                        echo "Error" . $e->getMessage(); //If we are not successful we will see an error
+                        echo "Error" . $e->getMessage();
                     }
-                ?>
-            </table>
+                ?> Pending Tasks
+                </h1>
+            </div>
+
+            <?php
+                include 'server/dbconnect.php';
+
+                try {
+                    $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
+                    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $sqlQuery = "SELECT * FROM $requestsTable WHERE completed_at IS NULL ORDER BY submitted_at DESC";
+
+                    foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
+                        echo '<div class="card">';
+                        echo '<h2>Department ' . $row['department'] .  ' - Room ' . $row['room_number'] . '</h2>';
+                        echo '<h3> Equipment: ' . $row['equipment_type'] . '</h3>';
+                        echo '<p>' . $row['short_descr'] .  '</p>';
+                        echo '<h4>Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</h4>';
+                        echo '<br><br>';
+                        echo '<button class="form-button">Complete Task</button>';
+                        echo '</div>';
+                    }
+                } catch(PDOException $e) {
+                    echo "Error" . $e->getMessage();
+                }
+            ?>
         </div>
     </body>
 </html>

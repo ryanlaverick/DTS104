@@ -31,7 +31,7 @@ if ($_SESSION['userType'] != 'admin') {
             </form>
         </div>
 
-        <div style="display: flex; flex-direction: column; justify-content: center; gap: 40px;">
+        <div id="vertical-column">
             <div class="card">
                 <div class="tag-line">
                     <h2>Pending Tasks</h2>

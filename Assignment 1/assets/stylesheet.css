@@ -121,6 +121,13 @@ div#logout {
     right: 0px;
 }
 
+#vertical-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
 #logout-button {
     padding: 8px 16px 8px 16px;
     border-radius: 0px 0px 0px 4px;
