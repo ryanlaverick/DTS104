@@ -11,14 +11,15 @@ try {
     $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword); //building a new PDO connection object
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // set the PDO error mode to exception
 
-    $statement = $connection->prepare("INSERT INTO $requestsTable (submitted_by, short_descr, equipment_type, room_number, department)
-    VALUES (:submitted_by, :short_descr, :equipment_type, :room_number, :department)");
+    $statement = $connection->prepare("INSERT INTO $requestsTable (submitted_by, short_descr, equipment_type, room_number, department, submitted_at)
+    VALUES (:submitted_by, :short_descr, :equipment_type, :room_number, :department, :submitted_at)");
 
     $statement->bindParam(':submitted_by', $submitted_by);
     $statement->bindParam(':short_descr', $short_descr);
     $statement->bindParam(':equipment_type', $equipment_type);
     $statement->bindParam(':room_number', $room_number);
     $statement->bindParam(':department', $department);
+    $statement->bindParam(':submitted_at', date('Y-m-d H:i:s'));
 
     $statement->execute();
 
