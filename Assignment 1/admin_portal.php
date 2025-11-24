@@ -7,7 +7,7 @@ if (!$_SESSION['loggedIn']) {
 }
 
 if ($_SESSION['userType'] != 'admin') {
-    header("Location: report.html");
+    header("Location: report_issue.php");
 }
 ?>
 
