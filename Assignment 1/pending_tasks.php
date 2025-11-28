@@ -63,7 +63,9 @@ if ($_SESSION['userType'] != 'admin') {
                         echo '<p>' . $row['short_descr'] .  '</p>';
                         echo '<h4>Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</h4>';
                         echo '<br><br>';
-                        echo '<button class="form-button">Complete Task</button>';
+                        echo '<form action="server/complete_task.php?id='.$row['id'].'" method="post" onsubmit="return confirm(\'Are you sure you want to complete this task?\');">';
+                        echo '<input type="submit" class="form-button" value="Complete Task">';
+                        echo '</form>';
                         echo '</div>';
                     }
                 } catch(PDOException $e) {

@@ -22,6 +22,7 @@ try {
             $row = $loginQuery->fetch();
 
             $_SESSION['loggedIn'] = true;
+            $_SESSION['id'] = $row['id'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['userType'] = $row['user_type'];
 
