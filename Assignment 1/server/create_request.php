@@ -1,7 +1,7 @@
 <?php
 include 'dbconnect.php';
 
-$submitted_by = "ryan.laverick03@hotmail.co.uk"; // TODO: Change this to pull from session once logged in
+$submitted_by = $_POST['email'];
 $short_descr = $_POST['short_descr'];
 $equipment_type = $_POST['equipment_type'];
 $department = $_POST['department'];

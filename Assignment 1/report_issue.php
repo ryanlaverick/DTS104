@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$email = $_SESSION['email'];
+
 if (!$_SESSION['loggedIn']) {
     header("Location: index.html");
 }
@@ -28,6 +30,11 @@ if (!$_SESSION['loggedIn']) {
 
         <form action="server/create_request.php" method="post" class="form">
             <h1>Request Support</h1>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-input" value="<?= $email; ?>" readonly="true" />
+            </div>
 
             <div class="form-group">
                 <label for="equipment_type">Equipment Type</label>

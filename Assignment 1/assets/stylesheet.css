@@ -50,6 +50,10 @@ a {
     margin-top: 8px;
 }
 
+.form-input[readonly] {
+    cursor: not-allowed;
+}
+
 textarea.form-input {
     min-height: 200px;
     resize: none;
