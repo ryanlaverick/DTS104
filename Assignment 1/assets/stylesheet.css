@@ -24,7 +24,7 @@ a {
     width: 100%;
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    padding: 40px;
+    padding: 20px;
 }
 
 .form {
@@ -34,7 +34,15 @@ a {
     max-width: 600px;
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    padding: 40px;
+    padding: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .form {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0%;
+    }
 }
 
 .form-group {
@@ -108,15 +116,9 @@ textarea.form-input {
     justify-content: space-between;
 }
 
-.ping {
-    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-
-    @keyframes ping {
-        75%, 100% {
-            transform: scale(2);
-            opacity: 0;
-        }
-    }
+.nav-link {
+    display: flex;
+    gap: 8px;
 }
 
 div#logout {
@@ -129,7 +131,7 @@ div#logout {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
 }
 
 #logout-button {
