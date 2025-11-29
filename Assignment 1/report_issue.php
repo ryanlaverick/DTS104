@@ -18,10 +18,51 @@ if (!$_SESSION['loggedIn']) {
 
         <link rel="stylesheet" href="assets/stylesheet.css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.1/css/all.min.css" rel="stylesheet">
-        
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <script>
+            function resetErrors() {
+                document.getElementById('equipment-type-errors').innerHTML = ""
+                document.getElementById('short-descr-errors').innerHTML = ""
+                document.getElementById('department-errors').innerHTML = ""
+                document.getElementById('room-number-errors').innerHTML = ""
+            }
+
+            function validate() {
+                resetErrors()
+
+                let hasErrors = false
+
+                let equipmentType = document.getElementById('equipment_type').value
+                if (! equipmentType || equipmentType == '') {
+                    hasErrors = true
+                    document.getElementById('equipment-type-errors').innerHTML += 'Please provide a valid equipment type!'
+                }
+
+                let shortDescription = document.getElementById('short_descr').value
+                if (! shortDescription || shortDescription == '') {
+                    hasErrors = true
+                    document.getElementById('short-descr-errors').innerHTML += 'Please provide a valid description!'
+                }
+
+                let department = document.getElementById('department').value
+                if (! department || department == '') {
+                    hasErrors = true
+                    document.getElementById('department-errors').innerHTML += 'Please provide a valid department!'
+                }
+
+                let roomNumber = document.getElementById('room_number').value
+                if (! roomNumber || roomNumber == '') {
+                    hasErrors = true
+                    document.getElementById('room-number-errors').innerHTML += 'Please provide a valid room number!'
+                }
+
+                return !hasErrors
+            }
+        </script>
     </head>
 
     <body>
@@ -31,7 +72,7 @@ if (!$_SESSION['loggedIn']) {
             </form>
         </div>
 
-        <form action="server/create_request.php" method="post" class="form">
+        <form action="server/create_request.php" method="post" onsubmit="return validate()" class="form">
             <h1>Request Support</h1>
 
             <div class="form-group">
@@ -42,25 +83,25 @@ if (!$_SESSION['loggedIn']) {
             <div class="form-group">
                 <label for="equipment_type">Equipment Type</label>
                 <input type="text" id="equipment_type" name="equipment_type" class="form-input" placeholder="Desktop PC" />
-                <ul id="equipment-type-errors" class="form-errors"></ul>
+                <div id="equipment-type-errors" class="form-errors"></div>
             </div>
 
             <div class="form-group">
                 <label for="short_descr">Description of the issue</label>
                 <textarea type="text" id="short_descr" name="short_descr" class="form-input" placeholder="PC will not turn on, it is plugged in at the wall and all relevant cables are attached"></textarea>
-                <ul id="short-descr-errors"></ul>
+                <div id="short-descr-errors" class="form-errors"></div>
             </div>
 
             <div class="form-group">
                 <label for="department">Department</label>
                 <input type="text" id="department" name="department" class="form-input" placeholder="Radiology" />
-                <ul id="department-errors" class="form-errors"></ul>
+                <div id="department-errors" class="form-errors"></div>
             </div>
 
             <div class="form-group">
                 <label for="room_number">Room Number</label>
                 <input type="text" id="room_number" name="room_number" class="form-input" placeholder="406" />
-                <ul id="room-number-errors" class="form-errors"></ul>
+                <div id="room-number-errors" class="form-errors"></div>
             </div>
 
             <input type="submit" class="form-button" value="Submit Request" />
