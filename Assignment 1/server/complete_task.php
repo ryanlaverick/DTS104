@@ -19,6 +19,8 @@ try {
         $updateQuery->bindParam('id', $taskId);
 
         $updateQuery->execute();
+
+        header('Location: ../pending_tasks.php');
     } else {
         echo "You are here by mistake";
     }
