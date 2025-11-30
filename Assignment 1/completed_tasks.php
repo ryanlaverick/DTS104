@@ -69,7 +69,21 @@ if ($_SESSION['userType'] != 'admin') {
                         $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
                         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $sqlQuery = "SELECT $requestsTable.*, $usersTable.email AS completed_by FROM $requestsTable LEFT JOIN $usersTable ON $requestsTable.id = $usersTable.id WHERE completed_at IS NOT NULL ORDER BY submitted_at DESC";
+                        $sqlQuery = "
+                        SELECT 
+                            northview_hospital_maintenance_requests.*,
+                            completed_by.email AS completed_by
+                        FROM 
+                            northview_hospital_maintenance_requests
+                        LEFT JOIN
+                            northview_hospital_users completed_by
+                        ON
+                            completed_by.id = northview_hospital_maintenance_requests.completed_by
+                        WHERE
+                            completed_at IS NOT NULL 
+                        ORDER BY 
+                            submitted_at
+                        DESC";
 
                         foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
                             echo '<div class="card">';
