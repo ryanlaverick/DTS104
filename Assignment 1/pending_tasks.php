@@ -47,7 +47,7 @@ if ($_SESSION['userType'] != 'admin') {
                         $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
                         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $countQuery = $connection->prepare("SELECT COUNT(*) FROM $requestsTable WHERE completed_at IS NULL");
+                        $countQuery = $connection->prepare("SELECT COUNT(*) FROM northview_hospital_maintenance_requests WHERE completed_at IS NULL");
                         $countQuery->execute();
 
                         echo $countQuery->fetch(PDO::FETCH_COLUMN);
@@ -67,7 +67,7 @@ if ($_SESSION['userType'] != 'admin') {
                         $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
                         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $sqlQuery = "SELECT * FROM $requestsTable WHERE completed_at IS NULL ORDER BY submitted_at DESC";
+                        $sqlQuery = "SELECT * FROM northview_hospital_maintenance_requests WHERE completed_at IS NULL ORDER BY submitted_at DESC";
 
                         foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
                             $actionString = 'server/complete_task.php?id='.$row['id'];

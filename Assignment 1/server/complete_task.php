@@ -13,7 +13,7 @@ try {
         $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $updateQuery = $connection->prepare("UPDATE $requestsTable SET completed_by = :completed_by, completed_at = :completed_at WHERE id = :id");
+        $updateQuery = $connection->prepare("UPDATE northview_hospital_maintenance_requests SET completed_by = :completed_by, completed_at = :completed_at WHERE id = :id");
         $updateQuery->bindParam(':completed_by', $completedBy);
         $updateQuery->bindParam(':completed_at', $completedAt);
         $updateQuery->bindParam('id', $taskId);

@@ -47,7 +47,7 @@ if ($_SESSION['userType'] != 'admin') {
                         $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
                         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $countQuery = $connection->prepare("SELECT COUNT(*) FROM $requestsTable WHERE completed_at IS NOT NULL");
+                        $countQuery = $connection->prepare("SELECT COUNT(*) FROM northview_hospital_maintenance_requests WHERE completed_at IS NOT NULL");
                         $countQuery->execute();
 
                         echo $countQuery->fetch(PDO::FETCH_COLUMN);

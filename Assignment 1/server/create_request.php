@@ -35,7 +35,7 @@ try {
     $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword); //building a new PDO connection object
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // set the PDO error mode to exception
 
-    $statement = $connection->prepare("INSERT INTO $requestsTable (submitted_by, short_descr, equipment_type, room_number, department, submitted_at)
+    $statement = $connection->prepare("INSERT INTO northview_hospital_maintenance_requests (submitted_by, short_descr, equipment_type, room_number, department, submitted_at)
     VALUES (:submitted_by, :short_descr, :equipment_type, :room_number, :department, :submitted_at)");
 
     $statement->bindParam(':submitted_by', $submittedBy);

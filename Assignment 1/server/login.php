@@ -13,7 +13,7 @@ try {
         $password = $_POST['password'];
         $userType = 'user';
 
-        $loginQuery = $conn->prepare("SELECT * FROM $usersTable WHERE email = :email AND password = :password");
+        $loginQuery = $conn->prepare("SELECT * FROM northview_hospital_users WHERE email = :email AND password = :password");
         $loginQuery->bindParam(':email', $email);
         $loginQuery->bindParam(':password', $password);
         $loginQuery->execute();

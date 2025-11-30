@@ -27,7 +27,7 @@ try {
         /*
          * Ensure that more than one account with the same email can be created
         */
-        $existenceQuery = $conn->prepare("SELECT 1 FROM $usersTable WHERE email = :email");
+        $existenceQuery = $conn->prepare("SELECT 1 FROM northview_hospital_users WHERE email = :email");
         $existenceQuery->bindParam(':email', $email);
         $existenceQuery->execute();
 
@@ -36,7 +36,7 @@ try {
             return;
         }
 
-        $registerQuery = $conn->prepare("INSERT INTO $usersTable (email, password, user_type) VALUES (:email, :password, :userType)");
+        $registerQuery = $conn->prepare("INSERT INTO northview_hospital_users (email, password, user_type) VALUES (:email, :password, :userType)");
         $registerQuery->bindParam('email', $email);
         $registerQuery->bindParam('password', $password);
         $registerQuery->bindParam('userType', $userType);
