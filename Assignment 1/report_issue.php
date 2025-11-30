@@ -12,10 +12,13 @@ $descriptionErrors = $_SESSION['descriptionErrors'] ?? [];
 $departmentErrors = $_SESSION['departmentErrors'] ?? [];
 $roomNumberErrors = $_SESSION['roomNumberErrors'] ?? [];
 
+$hasSubmittedRequest = (bool) $_SESSION['requestSubmitted'];
+
 unset($_SESSION['equipmentTypeErrors']);
 unset($_SESSION['descriptionErrors']);
 unset($_SESSION['departmentErrors']);
 unset($_SESSION['roomNumberErrors']);
+unset($_SESSION['requestSubmitted']);
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +85,14 @@ unset($_SESSION['roomNumberErrors']);
 
         <form action="server/create_request.php" method="post" onsubmit="return validate()" class="form">
             <h1>Request Support</h1>
+
+            <?php
+                if ($hasSubmittedRequest) {
+                    echo '<div class="form-success">';
+                    echo '<strong>Success!</strong> Your support ticket has been logged.';
+                    echo '</div>';
+                }
+            ?>
 
             <div class="form-group">
                 <label for="email">Email</label>

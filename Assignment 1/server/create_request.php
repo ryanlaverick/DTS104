@@ -47,7 +47,9 @@ try {
 
     $statement->execute();
 
-    echo "Request Submitted!";
+    $_SESSION['requestSubmitted'] = true;
+
+    header('Location: ../report_issue.php');
 } catch (PDOException $e) {
     echo $e->getMessage(), $e->getTraceAsString();
 }
