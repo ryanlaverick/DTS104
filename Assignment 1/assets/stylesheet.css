@@ -25,6 +25,7 @@ a {
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .form {
@@ -35,6 +36,7 @@ a {
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     padding: 20px;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 1200px) {
@@ -133,6 +135,14 @@ div#logout {
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+}
+
+#card-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 80vh;
+    overflow-y: auto;
 }
 
 #logout-button {
