@@ -26,14 +26,20 @@ try {
             $_SESSION['email'] = $row['email'];
             $_SESSION['userType'] = $row['user_type'];
 
-            if ($row['user_type'] === 'admin') {
-                header("Location: ../admin_portal.php");
-            } else {
-                header("Location: ../report_issue.php");
+            switch ($row['user_type']) {
+                case 'admin':
+                    header("Location: ../admin_portal.php");
+                    break;
+                default:
+                case 'user':
+                    header("Location: ../report_issue.php");
             }
         } else {
-            echo "Invalid credentials";
+            $_SESSION['loginErrors'] = ['Invalid credentials! Please try again'];
+
+            header('Location: ../index.php');
         }
+
     } else {
         echo "You are here by mistake";
     }

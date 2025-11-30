@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$loginErrors = $_SESSION['loginErrors'] ?? [];
+unset($_SESSION['loginErrors']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -63,6 +70,14 @@
                 </div>
 
                 <input type="submit" class="form-button" value="Login" />
+
+                <div class="form-errors">
+                    <?php
+                        foreach ($loginErrors as $error) {
+                            echo $error . "<br>";
+                        }
+                    ?>
+                </div>
             </form>
 
             <div class="divider-container">

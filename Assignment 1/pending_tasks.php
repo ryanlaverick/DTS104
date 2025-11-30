@@ -2,7 +2,7 @@
 session_start();
 
 if (!$_SESSION['loggedIn']) {
-    header("Location: index.html");
+    header("Location: index.php");
     return;
 }
 
