@@ -61,29 +61,30 @@ if ($_SESSION['userType'] != 'admin') {
                 </h1>
             </div>
 
+            <div id="card-scroll">
+                 <?php
+                    include 'server/dbconnect.php';
 
-            <?php
-                include 'server/dbconnect.php';
+                    try {
+                        $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
+                        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                try {
-                    $connection = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
-                    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $sqlQuery = "SELECT $requestsTable.*, $usersTable.email AS completed_by FROM $requestsTable LEFT JOIN $usersTable ON $requestsTable.id = $usersTable.id WHERE completed_at IS NOT NULL ORDER BY submitted_at DESC";
 
-                    $sqlQuery = "SELECT $requestsTable.*, $usersTable.email AS completed_by FROM $requestsTable LEFT JOIN $usersTable ON $requestsTable.id = $usersTable.id WHERE completed_at IS NOT NULL ORDER BY submitted_at DESC";
-
-                    foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
-                        echo '<div class="card">';
-                        echo '<h1>Department ' . $row['department'] .  ' - Room ' . $row['room_number'] . '</h1>';
-                        echo '<h2> Equipment: ' . $row['equipment_type'] . '</h2>';
-                        echo '<p>' . $row['short_descr'] .  '</p>';
-                        echo '<h3>Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</h3>';
-                        echo '<h3>Completed by ' . $row['completed_by'] . ' at ' . $row['completed_at'] . '</h3>';
-                        echo '</div>';
+                        foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
+                            echo '<div class="card">';
+                            echo '<h1>Department ' . $row['department'] .  ' - Room ' . $row['room_number'] . '</h1>';
+                            echo '<h2> Equipment: ' . $row['equipment_type'] . '</h2>';
+                            echo '<p>' . $row['short_descr'] .  '</p>';
+                            echo '<h3>Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</h3>';
+                            echo '<h3>Completed by ' . $row['completed_by'] . ' at ' . $row['completed_at'] . '</h3>';
+                            echo '</div>';
+                        }
+                    } catch(PDOException $e) {
+                        echo "Error" . $e->getMessage();
                     }
-                } catch(PDOException $e) {
-                    echo "Error" . $e->getMessage();
-                }
-            ?>
+                ?>
+            </div>
         </div>
     </body>
 </html>

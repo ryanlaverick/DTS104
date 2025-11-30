@@ -36,9 +36,9 @@ if ($_SESSION['userType'] != 'admin') {
 
         <div id="vertical-container">
             <div class="card">
-                <div class="tag-line">
-                    <h2>Pending Tasks</h2>
-                </div>
+                <h2>Pending Tasks</h2>
+                <p>Click here to view all pending requests that have not yet been completed!</p>
+                <p>Tasks appearing in this list still require triaging and support.</p>
 
                 <a href="pending_tasks.php">
                     <button class="form-button">View Pending Tasks</button>
@@ -47,6 +47,9 @@ if ($_SESSION['userType'] != 'admin') {
 
             <div class="card">
                 <h2>Completed Tasks</h2>
+
+                <p>Click here to view all completed requests!</p>
+                <p>Tasks appearing in this list have been dealt with and no longer require triaging or support.</p>
 
                 <a href="completed_tasks.php">
                     <button class="form-button">View Completed Tasks</button>

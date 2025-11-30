@@ -113,7 +113,7 @@ function validateRoomNumber(?string $roomNumber) {
         return $roomNumberErrors;
     }
 
-    if (! is_int($roomNumber)) {
+    if (! is_numeric($roomNumber)) {
         $roomNumberErrors[] = 'Please provide a numeric room number!';
     }
 
