@@ -34,7 +34,7 @@ if ($_SESSION['userType'] != 'admin') {
             </form>
         </div>
 
-        <div id="vertical-column">
+        <div id="vertical-container">
             <div class="card">
                 <div class="tag-line">
                     <h2>Pending Tasks</h2>

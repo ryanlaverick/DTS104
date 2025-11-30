@@ -127,7 +127,7 @@ div#logout {
     right: 0px;
 }
 
-#vertical-column {
+#vertical-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
