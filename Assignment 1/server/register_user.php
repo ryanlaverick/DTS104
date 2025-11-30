@@ -57,14 +57,14 @@ try {
 function validateEmail(?string $email) {
     $emailErrors = [];
 
-    if (! $email) {
+    if (! $email || strlen($email) < 1) {
         $emailErrors[] = 'Please provide an email address!';
 
         // Early return here prevents us encountering type errors when passing null to a function that expects a string
         return $emailErrors;
     }
 
-    if (strlen($email) < 1 || strlen($email) > 255) {
+    if (strlen($email) > 255) {
         $emailErrors[] = 'Email cannot be longer than 255 characters!';
     }
 
@@ -85,8 +85,8 @@ function validatePassword(?string $password) {
         return $passwordErrors;
     }
 
-    if (strlen($password) > 255) {
-        $passwordErrors[] = 'Password cannot be longer than 255 characters!';
+    if (strlen($password) > 64) {
+        $passwordErrors[] = 'Password cannot be longer than 64 characters!';
     }
 
     return $passwordErrors;
