@@ -70,6 +70,8 @@ if ($_SESSION['userType'] != 'admin') {
                         $sqlQuery = "SELECT * FROM $requestsTable WHERE completed_at IS NULL ORDER BY submitted_at DESC";
 
                         foreach ($connection->query($sqlQuery, PDO::FETCH_ASSOC) as $row) {
+                            $actionString = 'server/complete_task.php?id='.$row['id'];
+
                             echo '<div class="card">';
                             echo '<h2>Department ' . $row['department'] .  ' - Room ' . $row['room_number'] . '</h2>';
                             echo '<h3> Equipment: ' . $row['equipment_type'] . '</h3>';
@@ -78,7 +80,7 @@ if ($_SESSION['userType'] != 'admin') {
                             echo '<div id="card-info">';
                             echo '<p class="whisper-text">Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</p>';
                             echo '</div>';
-                            echo '<form action="server/complete_task.php?id='.$row['id'].'" method="post" onsubmit="return confirm(\'Are you sure you want to complete this task?\');">';
+                            echo '<form action="'.$actionString.'" method="post" onsubmit="return confirm(\'Are you sure you want to complete this task?\');">';
                             echo '<input type="submit" class="form-button" value="Complete Task">';
                             echo '</form>';
                             echo '</div>';
