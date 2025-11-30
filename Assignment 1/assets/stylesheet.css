@@ -75,6 +75,8 @@ textarea.form-input {
 }
 
 .form-button {
+    display: inline-block;
+    box-sizing: border-box;
     padding: 8px;
     border-radius: 4px;
     width: 100%;
@@ -83,6 +85,7 @@ textarea.form-input {
     background-repeat: no-repeat;
     text-align: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .form-button:hover {

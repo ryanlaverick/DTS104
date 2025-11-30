@@ -13,9 +13,7 @@ unset($_SESSION['loginErrors']);
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Northview Hospital Maintenance Requests</title>
 
-        <link rel="stylesheet" href="assets/stylesheet.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.1/css/all.min.css" rel="stylesheet">
-        
+        <link rel="stylesheet" href="assets/stylesheet.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -59,17 +57,17 @@ unset($_SESSION['loginErrors']);
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com" />
+                    <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com">
                     <div id="email-errors" class="form-errors"></div>
                 </div>
                     
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-input" id="password" name="password" type="password" placeholder="••••••••" />
+                    <input class="form-input" id="password" name="password" type="password" placeholder="••••••••">
                     <div id="password-errors" class="form-errors"></div>
                 </div>
 
-                <input type="submit" class="form-button" value="Login" />
+                <input type="submit" class="form-button" value="Login">
 
                 <div class="form-errors">
                     <?php
@@ -87,7 +85,7 @@ unset($_SESSION['loginErrors']);
             </div>
 
             <form action="register.php">
-                <input type="submit" class="form-button" value="Register" />
+                <input type="submit" class="form-button" value="Register">
             </form>
         </div>
     </body>
