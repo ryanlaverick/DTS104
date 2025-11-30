@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+$emailErrors = $_SESSION['emailErrors'] ?? [];
+$passwordErrors = $_SESSION['passwordErrors'] ?? [];
+
+unset($_SESSION['emailErrors']);
+unset($_SESSION['passwordErrors']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,19 +62,31 @@
                 Back to Login
             </a>
 
-            <form action="server/register_user.php" method="post" onsubmit="return validate()">
+            <form action="server/register_user.php" method="post">
                 <h1>Register</h1>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com" />
-                    <div id="email-errors" class="form-errors"></div>
+                    <div id="email-errors" class="form-errors">
+                        <?php
+                            foreach ($emailErrors as $error) {
+                                echo $error . "<br>";
+                            }
+                        ?>
+                    </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input class="form-input" id="password" name="password" type="password" placeholder="••••••••" />
-                    <div id="password-errors" class="form-errors"></div>
+                    <div id="password-errors" class="form-errors">
+                        <?php
+                            foreach ($passwordErrors as $error) {
+                                echo $error . "<br>";
+                            }
+                        ?>
+                    </div>
                 </div>
 
                 <input type="submit" class="form-button" value="Register" />

@@ -5,12 +5,24 @@ include 'dbconnect.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_POST['email'] ?? null;
+        $password = $_POST['password'] ?? null;
+        $userType = 'user';
+        
+        $emailErrors = validateEmail($email);
+        $passwordErrors = validatePassword($password);
+
+        if (count($emailErrors) > 0 || count($passwordErrors) > 0) {
+            $_SESSION['emailErrors'] = $emailErrors;
+            $_SESSION['passwordErrors'] = $passwordErrors;
+
+            header('Location: ../register.php');
+
+            exit;
+        }
+
         $conn = new PDO("mysql:host=$serverName;dbname=$database", $dbUsername, $dbPassword);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $userType = 'user';
 
         /*
          * Ensure that more than one account with the same email can be created
@@ -40,4 +52,42 @@ try {
     }
 } catch (PDOException $e) {
     echo $e->getMessage();
+}
+
+function validateEmail(?string $email) {
+    $emailErrors = [];
+
+    if (! $email) {
+        $emailErrors[] = 'Please provide an email address!';
+
+        // Early return here prevents us encountering type errors when passing null to a function that expects a string
+        return $emailErrors;
+    }
+
+    if (strlen($email) < 1 || strlen($email) > 255) {
+        $emailErrors[] = 'Email cannot be longer than 255 characters!';
+    }
+
+    if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErrors[] = 'Please provide a valid email address!';
+    }
+
+    return $emailErrors;
+}
+
+function validatePassword(?string $password) {
+    $passwordErrors = [];
+
+    if (! $password) {
+        $passwordErrors[] = 'Please provide a valid password!';
+
+        // Early return here prevents us encountering type errors when passing null to a function that expects a string
+        return $passwordErrors;
+    }
+
+    if (strlen($password) > 255) {
+        $passwordErrors[] = 'Password cannot be longer than 255 characters!';
+    }
+
+    return $passwordErrors;
 }
