@@ -62,7 +62,7 @@ unset($_SESSION['passwordErrors']);
                 Back to Login
             </a>
 
-            <form action="server/register_user.php" method="post">
+            <form action="server/register_user.php" method="post" onsubmit="return validate()">
                 <h1>Register</h1>
 
                 <div class="form-group">
