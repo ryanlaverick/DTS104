@@ -76,8 +76,10 @@ if ($_SESSION['userType'] != 'admin') {
                             echo '<h2>Department ' . $row['department'] .  ' - Room ' . $row['room_number'] . '</h2>';
                             echo '<h3> Equipment: ' . $row['equipment_type'] . '</h3>';
                             echo '<p>' . $row['short_descr'] .  '</p>';
-                            echo '<h4>Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</h4>';
                             echo '<br><br>';
+                            echo '<div id="card-info">';
+                            echo '<p class="whisper-text">Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</p>';
+                            echo '</div>';
                             echo '<form action="server/complete_task.php?id='.$row['id'].'" method="post" onsubmit="return confirm(\'Are you sure you want to complete this task?\');">';
                             echo '<input type="submit" class="form-button" value="Complete Task">';
                             echo '</form>';

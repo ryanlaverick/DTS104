@@ -76,8 +76,10 @@ if ($_SESSION['userType'] != 'admin') {
                             echo '<h1>Department ' . $row['department'] .  ' - Room ' . $row['room_number'] . '</h1>';
                             echo '<h2> Equipment: ' . $row['equipment_type'] . '</h2>';
                             echo '<p>' . $row['short_descr'] .  '</p>';
-                            echo '<h3>Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</h3>';
-                            echo '<h3>Completed by ' . $row['completed_by'] . ' at ' . $row['completed_at'] . '</h3>';
+                            echo '<div id="card-info">';
+                            echo '<p class="whisper-text">Submitted by ' . $row['submitted_by'] . ' at ' . $row['submitted_at'] . '</p>';
+                            echo '<p class="whisper-text">Completed by ' . $row['completed_by'] . ' at ' . $row['completed_at'] . '</p>';
+                            echo '</div>';
                             echo '</div>';
                         }
                     } catch(PDOException $e) {

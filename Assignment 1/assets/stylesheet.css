@@ -124,6 +124,12 @@ textarea.form-input {
     gap: 8px;
 }
 
+.whisper-text {
+    opacity: 40%;
+    font-size: 12px;
+    font-style: italic;
+}
+
 div#logout {
     position: absolute;
     top: 0px;
@@ -158,4 +164,8 @@ div#logout {
 #logout-button:hover {
     background-color: darkred;
     transition-duration: 500ms;
+}
+
+#card-info {
+    text-align: right;
 }
