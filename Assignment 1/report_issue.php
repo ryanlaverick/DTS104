@@ -1,11 +1,21 @@
 <?php
 session_start();
 
-$email = $_SESSION['email'];
-
 if (!$_SESSION['loggedIn']) {
     header("Location: index.html");
+    return;
 }
+
+$email = $_SESSION['email'];
+$equipmentTypeErrors = $_SESSION['equipmentTypeErrors'] ?? [];
+$descriptionErrors = $_SESSION['descriptionErrors'] ?? [];
+$departmentErrors = $_SESSION['departmentErrors'] ?? [];
+$roomNumberErrors = $_SESSION['roomNumberErrors'] ?? [];
+
+unset($_SESSION['equipmentTypeErrors']);
+unset($_SESSION['descriptionErrors']);
+unset($_SESSION['departmentErrors']);
+unset($_SESSION['roomNumberErrors']);
 ?>
 
 <!DOCTYPE html>
@@ -83,25 +93,49 @@ if (!$_SESSION['loggedIn']) {
             <div class="form-group">
                 <label for="equipment_type">Equipment Type</label>
                 <input type="text" id="equipment_type" name="equipment_type" class="form-input" placeholder="Desktop PC" />
-                <div id="equipment-type-errors" class="form-errors"></div>
+                <div id="equipment-type-errors" class="form-errors">
+                    <?php
+                        foreach ($equipmentTypeErrors as $error) {
+                            echo $error . "<br>";
+                        }
+                    ?>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="short_descr">Description of the issue</label>
                 <textarea type="text" id="short_descr" name="short_descr" class="form-input" placeholder="PC will not turn on, it is plugged in at the wall and all relevant cables are attached"></textarea>
-                <div id="short-descr-errors" class="form-errors"></div>
+                <div id="short-descr-errors" class="form-errors">
+                    <?php
+                        foreach ($descriptionErrors as $error) {
+                            echo $error . "<br>";
+                        }
+                    ?>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="department">Department</label>
                 <input type="text" id="department" name="department" class="form-input" placeholder="Radiology" />
-                <div id="department-errors" class="form-errors"></div>
+                <div id="department-errors" class="form-errors">
+                    <?php
+                        foreach ($departmentErrors as $error) {
+                            echo $error . "<br>";
+                        }
+                    ?>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="room_number">Room Number</label>
                 <input type="text" id="room_number" name="room_number" class="form-input" placeholder="406" />
-                <div id="room-number-errors" class="form-errors"></div>
+                <div id="room-number-errors" class="form-errors">
+                    <?php
+                        foreach ($roomNumberErrors as $error) {
+                            echo $error . "<br>";
+                        }
+                    ?>
+                </div>
             </div>
 
             <input type="submit" class="form-button" value="Submit Request" />
