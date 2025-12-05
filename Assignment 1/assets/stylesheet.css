@@ -7,26 +7,44 @@ body {
     background-repeat: no-repeat;
     justify-content: center;
     display: flex;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 label {
     font-weight: 500;
 }
 
-#divider {
-    margin-top: 25px;
-    border: 0.5px solid rgb(208, 207, 207);
+a {
+    text-decoration: underline;
+    color: black;
 }
 
-form, .form {
+.card {
+    background-color: rgb(241, 241, 241);
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form {
     background-color: rgb(241, 241, 241);
     margin-top: 5%;
-    width: 50%;
+    width: 75%;
     max-width: 600px;
     border-radius: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    padding: 40px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1200px) {
+    .form {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0%;
+    }
 }
 
 .form-group {
@@ -35,14 +53,30 @@ form, .form {
 
 .form-input {
     background-color: white;
-    border: 1px;
+    border: 1px solid lightgray;
     padding: 8px;
     border-radius: 4px;
     width: 100%;
     margin-top: 8px;
+    box-sizing: border-box;
+}
+
+.form-input[readonly] {
+    cursor: not-allowed;
+}
+
+textarea.form-input {
+    min-height: 200px;
+    resize: none;
+}
+
+.form-input::placeholder {
+    opacity: 75%;
 }
 
 .form-button {
+    display: inline-block;
+    box-sizing: border-box;
     padding: 8px;
     border-radius: 4px;
     width: 100%;
@@ -51,6 +85,7 @@ form, .form {
     background-repeat: no-repeat;
     text-align: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .form-button:hover {
@@ -62,4 +97,84 @@ form, .form {
 .form-errors {
     color: red;
     margin-top: 8px;
+}
+
+.form-success {
+    color: green;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.divider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #9f9f9f;
+}
+
+.icon-small {
+    height: 16px;
+    width: 16px;
+}
+
+.tag-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-link {
+    display: flex;
+    gap: 8px;
+}
+
+.whisper-text {
+    opacity: 40%;
+    font-size: 12px;
+    font-style: italic;
+}
+
+div#logout {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#vertical-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+#card-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+#logout-button {
+    padding: 8px 16px 8px 16px;
+    border-radius: 0px 0px 0px 4px;
+    color: white;
+    background-color: red;
+    background-repeat: no-repeat;
+    text-align: center;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    background-color: darkred;
+    transition-duration: 500ms;
+}
+
+#card-info {
+    text-align: right;
 }

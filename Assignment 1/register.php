@@ -1,0 +1,94 @@
+<?php
+session_start();
+
+$emailErrors = $_SESSION['emailErrors'] ?? [];
+$passwordErrors = $_SESSION['passwordErrors'] ?? [];
+
+unset($_SESSION['emailErrors']);
+unset($_SESSION['passwordErrors']);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Northview Hospital - Register</title>
+
+        <link rel="stylesheet" href="assets/stylesheet.css" >
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <script>
+            function resetErrors() {
+                document.getElementById('email-errors').innerHTML = ""
+                document.getElementById('password-errors').innerHTML = ""
+            }
+
+            function validate() {
+                resetErrors()
+
+                let hasErrors = false
+
+                let email = document.getElementById('email').value
+                let emailInput = document.getElementById('email').classList
+
+                if (! email || email == '') {
+                    hasErrors = true
+                    document.getElementById('email-errors').innerHTML += 'Please provide a valid email address!'
+                }
+
+                let password = document.getElementById('password').value
+                let passwordInput = document.getElementById('password').classList
+
+                if (! password || password == '') {
+                    hasErrors = true
+                    document.getElementById('password-errors').innerHTML += 'Please provide a valid password!'
+                }
+
+                return !hasErrors
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="form">
+            <a class="nav-link" href="index.php" title="Redirect back to the Login page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon-small"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 105.4-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+                Back to Login
+            </a>
+
+            <form action="server/register_user.php" method="post" onsubmit="return validate()">
+                <h1>Register</h1>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-input" id="email" name="email" placeholder="john.doe@placeholder.com">
+                    <div id="email-errors" class="form-errors">
+                        <?php
+                            foreach ($emailErrors as $error) {
+                                echo $error . "<br>";
+                            }
+                        ?>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-input" id="password" name="password" type="password" placeholder="••••••••">
+                    <div id="password-errors" class="form-errors">
+                        <?php
+                            foreach ($passwordErrors as $error) {
+                                echo $error . "<br>";
+                            }
+                        ?>
+                    </div>
+                </div>
+
+                <input type="submit" class="form-button" value="Register">
+            </form>
+        </div>
+    </body>
+</html>

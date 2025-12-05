@@ -13,7 +13,7 @@ try {
         $password = $_POST['password'];
         $userType = 'user';
 
-        $loginQuery = $conn->prepare("SELECT * FROM $usersTable WHERE email = :email AND password = :password");
+        $loginQuery = $conn->prepare("SELECT * FROM northview_hospital_users WHERE email = :email AND password = :password");
         $loginQuery->bindParam(':email', $email);
         $loginQuery->bindParam(':password', $password);
         $loginQuery->execute();
@@ -22,17 +22,24 @@ try {
             $row = $loginQuery->fetch();
 
             $_SESSION['loggedIn'] = true;
+            $_SESSION['id'] = $row['id'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['userType'] = $row['user_type'];
 
-            if ($row['user_type'] === 'admin') {
-                header("Location: ../view_tasks.php");
-            } else {
-                header("Location: ../report.html");
+            switch ($row['user_type']) {
+                case 'admin':
+                    header("Location: ../admin_portal.php");
+                    break;
+                default:
+                case 'user':
+                    header("Location: ../report_issue.php");
             }
         } else {
-            echo "Invalid credentials";
+            $_SESSION['loginErrors'] = ['Invalid credentials! Please try again'];
+
+            header('Location: ../index.php');
         }
+
     } else {
         echo "You are here by mistake";
     }
